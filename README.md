@@ -4,4 +4,4 @@ In MVC even html input type "file" is used to upload files but if we want to upl
 
 If you already know normal file upload just adding jquery.form.js plugin and few lines of code will do the trick. 
 
-Follow these steps as mentioned at <a href='http://mitracircle.com/post/5/file-upload-without-page-refresh-in-mvc' target="_new">mitracircle.com</a>.
+To do this follow these steps as mentioned at <a href='http://mitracircle.com/post/5/file-upload-without-page-refresh-in-mvc' target="_new">mitracircle.com</a>.
