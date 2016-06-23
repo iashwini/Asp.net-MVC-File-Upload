@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "FileUpload";
+}
+
+<link href="~/Content/style.css" rel="stylesheet" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
+
+<h2>FileUpload</h2>
+
+@using (Html.BeginForm("FileUpload", "Home"))
+{
+    @Html.AntiForgeryToken()
+    <input type="file" name="files"><br>
+    <input type="submit" value="Upload File to Server">
+}
+
+<div class="progress progress-striped">
+    <div class="progress-bar progress-bar-success">0%</div>
+</div>
+
+<script>
+    (function () {
+
+        var bar = $('.progress-bar');
+        var percent = $('.progress-bar');
+        var status = $('#status');
+
+        $('form').ajaxForm({
+            beforeSend: function () {
+                status.empty();
+                var percentVal = '0%';
+                bar.width(percentVal)
+                percent.html(percentVal);
+            },
+            uploadProgress: function (event, position, total, percentComplete) {
+                var percentVal = percentComplete + '%';
+                bar.width(percentVal)
+                percent.html(percentVal);
+            },
+            success: function () {
+                var percentVal = '100%';
+                bar.width(percentVal)
+                percent.html(percentVal);
+            },
+            complete: function (xhr) {
+                status.html(xhr.responseText);
+            }
+        });
+
+    })();
+</script>
